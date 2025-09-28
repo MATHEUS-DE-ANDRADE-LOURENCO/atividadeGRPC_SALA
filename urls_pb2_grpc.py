@@ -26,7 +26,7 @@ if _version_not_supported:
 
 
 class EncurtadorURLStub(object):
-    """Definição do serviço
+    """Serviço
     """
 
     def __init__(self, channel):
@@ -36,31 +36,29 @@ class EncurtadorURLStub(object):
             channel: A grpc.Channel.
         """
         self.EncurtarURL = channel.unary_unary(
-                '/encurtador_url.EncurtadorURL/EncurtarURL',
-                request_serializer=urls__pb2.EncurtarUrlRequest.SerializeToString,
-                response_deserializer=urls__pb2.EncurtarUrlResponse.FromString,
+                '/encurtador.EncurtadorURL/EncurtarURL',
+                request_serializer=urls__pb2.RequisicaoEncurtar.SerializeToString,
+                response_deserializer=urls__pb2.RespostaEncurtar.FromString,
                 _registered_method=True)
         self.ObterURLLonga = channel.unary_unary(
-                '/encurtador_url.EncurtadorURL/ObterURLLonga',
-                request_serializer=urls__pb2.ObterUrlLongaRequest.SerializeToString,
-                response_deserializer=urls__pb2.ObterUrlLongaResponse.FromString,
+                '/encurtador.EncurtadorURL/ObterURLLonga',
+                request_serializer=urls__pb2.RequisicaoObter.SerializeToString,
+                response_deserializer=urls__pb2.RespostaObter.FromString,
                 _registered_method=True)
 
 
 class EncurtadorURLServicer(object):
-    """Definição do serviço
+    """Serviço
     """
 
     def EncurtarURL(self, request, context):
-        """RPC para encurtar uma URL
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def ObterURLLonga(self, request, context):
-        """RPC para obter a URL longa original
-        """
+        """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
@@ -70,24 +68,24 @@ def add_EncurtadorURLServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'EncurtarURL': grpc.unary_unary_rpc_method_handler(
                     servicer.EncurtarURL,
-                    request_deserializer=urls__pb2.EncurtarUrlRequest.FromString,
-                    response_serializer=urls__pb2.EncurtarUrlResponse.SerializeToString,
+                    request_deserializer=urls__pb2.RequisicaoEncurtar.FromString,
+                    response_serializer=urls__pb2.RespostaEncurtar.SerializeToString,
             ),
             'ObterURLLonga': grpc.unary_unary_rpc_method_handler(
                     servicer.ObterURLLonga,
-                    request_deserializer=urls__pb2.ObterUrlLongaRequest.FromString,
-                    response_serializer=urls__pb2.ObterUrlLongaResponse.SerializeToString,
+                    request_deserializer=urls__pb2.RequisicaoObter.FromString,
+                    response_serializer=urls__pb2.RespostaObter.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'encurtador_url.EncurtadorURL', rpc_method_handlers)
+            'encurtador.EncurtadorURL', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('encurtador_url.EncurtadorURL', rpc_method_handlers)
+    server.add_registered_method_handlers('encurtador.EncurtadorURL', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
 class EncurtadorURL(object):
-    """Definição do serviço
+    """Serviço
     """
 
     @staticmethod
@@ -104,9 +102,9 @@ class EncurtadorURL(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/encurtador_url.EncurtadorURL/EncurtarURL',
-            urls__pb2.EncurtarUrlRequest.SerializeToString,
-            urls__pb2.EncurtarUrlResponse.FromString,
+            '/encurtador.EncurtadorURL/EncurtarURL',
+            urls__pb2.RequisicaoEncurtar.SerializeToString,
+            urls__pb2.RespostaEncurtar.FromString,
             options,
             channel_credentials,
             insecure,
@@ -131,9 +129,9 @@ class EncurtadorURL(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/encurtador_url.EncurtadorURL/ObterURLLonga',
-            urls__pb2.ObterUrlLongaRequest.SerializeToString,
-            urls__pb2.ObterUrlLongaResponse.FromString,
+            '/encurtador.EncurtadorURL/ObterURLLonga',
+            urls__pb2.RequisicaoObter.SerializeToString,
+            urls__pb2.RespostaObter.FromString,
             options,
             channel_credentials,
             insecure,

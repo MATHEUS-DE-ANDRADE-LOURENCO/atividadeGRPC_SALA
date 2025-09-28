@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package encurtador;
+
+// Mensagens
+message RequisicaoEncurtar {
+  string url_longa = 1;
+}
+
+message RespostaEncurtar {
+  string url_curta = 1; // ex: http://localhost:50051/ABC1234
+  string codigo = 2;    // só o código curto (ABC1234)
+  bool sucesso = 3;
+  string msg = 4;
+}
+
+message RequisicaoObter {
+  string codigo = 1;
+}
+
+message RespostaObter {
+  string url_longa = 1;
+  bool sucesso = 2;
+  string msg = 3;
+}
+
+// Serviço
+service EncurtadorURL {
+  rpc EncurtarURL (RequisicaoEncurtar) returns (RespostaEncurtar);
+  rpc ObterURLLonga (RequisicaoObter) returns (RespostaObter);
+}

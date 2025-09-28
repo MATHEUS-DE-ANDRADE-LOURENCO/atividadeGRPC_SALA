@@ -1,0 +1,4 @@
+/workspaces/atividadeGRPC_SALA/build/CMakeFiles/generate_proto.dir
+/workspaces/atividadeGRPC_SALA/build/CMakeFiles/cliente_cpp.dir
+/workspaces/atividadeGRPC_SALA/build/CMakeFiles/edit_cache.dir
+/workspaces/atividadeGRPC_SALA/build/CMakeFiles/rebuild_cache.dir
